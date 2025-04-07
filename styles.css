@@ -192,18 +192,5 @@
     color: #fff;
   }
   
-  #submit-answer-button {
-    margin-top: 20px;
-    padding: 12px;
-    background-color: #00ffff;
-    color: #000;
-    border-radius: 10px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  
-  #submit-answer-button:hover {
-    background-color: #00dddd;
-  }
+
   
