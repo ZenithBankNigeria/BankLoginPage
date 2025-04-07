@@ -3,60 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>The Inheritance Heist – Main Menu</title>
+  <title>Game – The Inheritance Heist</title>
   <link rel="stylesheet" href="styles.css" />
+  <script src="game.js" defer></script>
 </head>
 <body>
-  <div class="main-container">
-    <h1>The Inheritance Heist</h1>
-    <p class="subtitle">Choose Your Path</p>
-    
-    <div class="options">
-      <!-- First Option: Number Grid -->
-      <div class="option" id="option1">
-        <h3>Unlock the Vault</h3>
-        <p>Input the secret number sequence.</p>
-      </div>
+  <div class="vault-container">
+    <h2>PRIVATE CLIENT VAULT</h2>
+    <button class="file-button" onclick="openFile('report')">📄 Quarterly Report</button>
+    <button class="file-button" onclick="openFile('clients')">🗂️ Client List</button>
+    <button class="file-button" onclick="openFile('backup')">💾 Legacy Backup</button>
+    <button class="file-button" onclick="showTriviaSection()">📖 Biography Trivia</button>
 
-      <!-- Second Option: Game Phase -->
-      <div class="option" id="option2">
-        <h3>Game Phase 1</h3>
-        <p>Start the first phase of your quest.</p>
-      </div>
-
-      <!-- Third Option: Number Riddle -->
-      <div class="option" id="option3">
-        <h3>Number Riddle</h3>
-        <p>Try your luck with number-based riddles!</p>
-      </div>
-
-      <!-- Fourth Option: Biography Questions -->
-      <div class="option" id="option4">
-        <h3>Trivia: Babatunde's Biography</h3>
-        <p>Answer questions based on Babatunde's life.</p>
-      </div>
-    </div>
-
-    <!-- Trivia Questions Section (This will be hidden until option 4 is selected) -->
-    <div class="questions-container" id="questionsContainer" style="display: none;">
-      <h3>Answer the following questions based on Babatunde's biography:</h3>
-      <form id="questionForm">
-        <label for="question1">How many wives did Babatunde have?</label>
-        <input type="number" id="question1" required placeholder="Answer: 3">
-
-        <label for="question2">How many companies did he establish during his career?</label>
-        <input type="number" id="question2" required placeholder="Answer: 11">
-
-        <label for="question3">How many years did Babatunde live abroad?</label>
-        <input type="number" id="question3" required placeholder="Answer: 29">
-
-        <button type="submit">Submit Answers</button>
-        <p id="questionErrorMsg" style="color: red; display: none;">Incorrect answers. Please try again.</p>
-      </form>
-    </div>
-
+    <div class="countdown" id="countdown">SECURITY BREACH DETECTED – LOCKDOWN IN <span id="timer">10:00</span></div>
+    <button id="failsafe-button" onclick="window.location.href='bomb.html'">ENTER FAILSAFE MODE</button>
   </div>
 
-  <script src="game.js"></script>
+  <!-- Trivia Section: Biography Questions -->
+  <div class="trivia-section" id="trivia-section" style="display: none;">
+    <h3>Babatunde's Biography Trivia</h3>
+    <form id="trivia-form">
+      <label for="question1">How many wives did Babatunde have?</label>
+      <input type="number" id="question1" placeholder="Answer: 3">
+
+      <label for="question2">How many companies did he establish during his career?</label>
+      <input type="number" id="question2" placeholder="Answer: 11">
+
+      <label for="question3">How many years did Babatunde live abroad?</label>
+      <input type="number" id="question3" placeholder="Answer: 29">
+
+      <button type="submit">Submit Answers</button>
+    </form>
+    <p id="trivia-error-msg" style="color: red; display: none;">Incorrect answers. Please try again.</p>
+  </div>
 </body>
 </html>
