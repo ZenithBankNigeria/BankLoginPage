@@ -3,39 +3,108 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Game – The Inheritance Heist</title>
+  <title>The Inheritance Heist – Client Vault</title>
   <link rel="stylesheet" href="styles.css" />
-  <script src="game.js" defer></script>
 </head>
 <body>
   <div class="vault-container">
     <h2>PRIVATE CLIENT VAULT</h2>
     <button class="file-button" onclick="openFile('report')">📄 Quarterly Report</button>
     <button class="file-button" onclick="openFile('clients')">🗂️ Client List</button>
-    <button class="file-button" onclick="showTriviaSection()">📖 Biography Trivia</button>
+    <button class="file-button" onclick="openFile('biography')">📖 Biography Trivia</button>
+    <button class="file-button" onclick="openFile('numberGrid')">🔢 Number Grid</button> <!-- Der neue Button -->
 
     <div class="countdown" id="countdown">SECURITY BREACH DETECTED – LOCKDOWN IN <span id="timer">10:00</span></div>
     <button id="failsafe-button" onclick="window.location.href='bomb.html'">ENTER FAILSAFE MODE</button>
   </div>
 
-  <!-- Trivia Section: Biography Questions -->
-  <div class="trivia-section" id="trivia-section" style="display: none;">
-    <h3>Babatunde's Biography Trivia</h3>
-    <div class="trivia-question" id="question-1">1. How many wives does Babatunde have?</div>
-    <div class="trivia-question" id="question-2">2. What is Babatunde's favorite number?</div>
-    <div class="trivia-question" id="question-3">3. What is the age of his eldest child?</div>
-
-    <input type="text" id="trivia-answer-input" placeholder="Enter your answers here" />
-
-    <button id="submit-answer-button" onclick="checkAnswers()">Submit Answers</button>
-    <p id="trivia-error-msg" style="color: red; display: none;">Incorrect answers. Please try again.</p>
-  </div>
-
-  <!-- Modal for file view -->
   <div class="modal" id="modal">
     <h3 id="modal-title">File Viewer</h3>
     <div id="modal-content"></div>
     <button onclick="closeModal()" class="file-button">Close</button>
   </div>
+
+  <script>
+    const modal = document.getElementById("modal");
+    const modalContent = document.getElementById("modal-content");
+    const modalTitle = document.getElementById("modal-title");
+    const countdownEl = document.getElementById("countdown");
+    const timerEl = document.getElementById("timer");
+    const failsafeBtn = document.getElementById("failsafe-button");
+    let countdownInterval;
+
+    // Hier wird die neue Grid-Funktion aufgerufen
+    function openFile(type) {
+      modal.style.display = "block";
+      modalContent.innerHTML = "";
+
+      if (type === "numberGrid") {
+        modalTitle.textContent = "Number Grid";
+        const grid = document.createElement("div");
+        grid.className = "number-grid";
+        const correctNumbers = [4, 24, 40]; // Richtig angepasste Zahlen
+        for (let i = 1; i <= 25; i++) {
+          const number = document.createElement("div");
+          number.className = "number";
+          number.textContent = i * 2; // Gitter von 2 bis 50 in 2er Schritten
+          if (correctNumbers.includes(i * 2)) {
+            number.addEventListener("click", () => {
+              number.classList.add("correct");
+              if (document.querySelectorAll(".correct").length === correctNumbers.length) {
+                triggerCountdown();
+              }
+            });
+          } else {
+            number.addEventListener("click", () => {
+              number.style.opacity = "0.3";
+            });
+          }
+          grid.appendChild(number);
+        }
+        modalContent.appendChild(grid);
+      } else if (type === "biography") {
+        modalTitle.textContent = "Biography Trivia";
+        modalContent.innerHTML = `
+          <p>Here are the trivia questions about Babatunde Olumide's life:</p>
+          <ul>
+            <li><b>Question 1:</b> How many women did Babatunde marry in his lifetime?</li>
+            <li><b>Question 2:</b> In which decade did Babatunde start his business empire?</li>
+            <li><b>Question 3:</b> How many years did Babatunde spend living abroad?</li>
+          </ul>
+          <button class="file-button" onclick="submitTriviaAnswers()">Submit Answers</button>
+        `;
+      } else {
+        modalTitle.textContent = type === "report" ? "Quarterly Report" : "Client Roster";
+        modalContent.innerHTML = "<p>Nothing suspicious here... or is there?</p>";
+      }
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    function triggerCountdown() {
+      closeModal();
+      countdownEl.style.display = "block";
+      failsafeBtn.style.display = "block";
+      let time = 600;
+      countdownInterval = setInterval(() => {
+        const minutes = Math.floor(time / 60).toString().padStart(2, '0');
+        const seconds = (time % 60).toString().padStart(2, '0');
+        timerEl.textContent = `${minutes}:${seconds}`;
+        time--;
+        if (time < 0) {
+          clearInterval(countdownInterval);
+          alert("System locked. Game over.");
+        }
+      }, 1000);
+    }
+
+    function submitTriviaAnswers() {
+      // Hier kannst du Logik hinzufügen, um zu überprüfen, ob die Antworten korrekt sind
+      alert("Answers submitted! Now, solve the number grid.");
+    }
+  </script>
 </body>
 </html>
+    

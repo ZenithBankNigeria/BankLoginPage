@@ -157,14 +157,38 @@
     font-weight: bold;
     display: none;
   }
-  /* Trivia Section Styles */
+  /* All other styles remain the same */
+
+/* All other styles remain the same */
+
+/* Trivia Section Styles */
 .trivia-section {
     text-align: center;
+    display: none;
   }
   
-  .trivia-question {
-    margin-bottom: 10px;
-    font-size: 1.2em;
+  .number-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .number {
+    background: #1f1f1f;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .number.correct {
+    background: #00ff88;
+    color: #000;
+  }
+  
+  .number.incorrect {
+    background: #ff4444;
     color: #fff;
   }
   
@@ -182,3 +206,4 @@
   #submit-answer-button:hover {
     background-color: #00dddd;
   }
+  
