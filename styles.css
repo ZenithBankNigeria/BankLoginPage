@@ -1,4 +1,4 @@
-/* General reset and styles */
+/* General Styles */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,7 +6,6 @@
     font-family: 'Segoe UI', sans-serif;
   }
   
-  /* Background and body settings */
   body {
     background: radial-gradient(circle, #1e1e1e, #000000);
     color: #e0e0e0;
@@ -16,22 +15,78 @@
     height: 100vh;
   }
   
-  /* Vault container */
-  .vault-container {
-    max-width: 400px;
-    text-align: center;
+  /* Login Page Styles */
+  .login-container {
     background: #121212;
     padding: 40px;
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(0,255,255,0.1);
+    width: 350px;
+    text-align: center;
   }
   
-  .vault-container h2 {
+  h1 {
+    font-size: 1.8em;
+    margin-bottom: 0.2em;
     color: #00ffff;
-    margin-bottom: 20px;
   }
   
-  /* File buttons */
+  .subtitle {
+    font-size: 0.95em;
+    color: #aaa;
+    margin-bottom: 1.5em;
+  }
+  
+  label {
+    display: block;
+    text-align: left;
+    margin: 10px 0 5px;
+    font-weight: bold;
+    color: #ccc;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background: #1f1f1f;
+    color: #eee;
+  }
+  
+  input:focus {
+    outline: 2px solid #00ffff;
+  }
+  
+  button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #00ffff;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  button:hover {
+    background-color: #00dddd;
+  }
+  
+  .footer-note {
+    margin-top: 20px;
+    font-size: 0.8em;
+    color: #555;
+  }
+  
+  /* Game & Vault Page Styles */
+  .vault-container {
+    max-width: 400px;
+    text-align: center;
+  }
+  
   .file-button {
     width: 100%;
     padding: 15px;
@@ -50,7 +105,6 @@
     color: #000;
   }
   
-  /* Modal */
   .modal {
     display: none;
     background-color: rgba(0, 0, 0, 0.95);
@@ -66,53 +120,26 @@
     color: #00ffff;
   }
   
-  /* Trivia Section Styles */
-  .trivia-section {
-    margin-top: 40px;
+  .number-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .number {
     background: #1f1f1f;
     padding: 15px;
-    border-radius: 10px;
-  }
-  
-  .trivia-section h3 {
-    margin-bottom: 10px;
-    color: #00ffff;
-  }
-  
-  .trivia-section label {
-    display: block;
-    color: #ccc;
-    margin: 10px 0 5px;
-    font-weight: bold;
-  }
-  
-  .trivia-section input {
-    width: 100%;
-    padding: 10px;
-    border: none;
     border-radius: 8px;
-    margin-bottom: 15px;
-    background: #1f1f1f;
-    color: #eee;
-  }
-  
-  .trivia-section button {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    background-color: #00ffff;
-    color: #000;
-    font-weight: bold;
     cursor: pointer;
-    transition: background 0.3s;
+    font-weight: bold;
   }
   
-  .trivia-section button:hover {
-    background-color: #00dddd;
+  .number.correct {
+    background: #00ff88;
+    color: #000;
   }
   
-  /* Countdown and failsafe button */
   .countdown {
     font-size: 1.2em;
     margin-top: 20px;
@@ -130,4 +157,28 @@
     font-weight: bold;
     display: none;
   }
+  /* Trivia Section Styles */
+.trivia-section {
+    text-align: center;
+  }
   
+  .trivia-question {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: #fff;
+  }
+  
+  #submit-answer-button {
+    margin-top: 20px;
+    padding: 12px;
+    background-color: #00ffff;
+    color: #000;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  #submit-answer-button:hover {
+    background-color: #00dddd;
+  }
