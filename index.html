@@ -1,99 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #1d3557, #457b9d);
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .login-container {
-      background-color: #f1faee;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-      width: 100%;
-      max-width: 400px;
-    }
-
-    .login-container h2 {
-      text-align: center;
-      color: #1d3557;
-      margin-bottom: 1.5rem;
-    }
-
-    .form-group {
-      margin-bottom: 1rem;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 0.5rem;
-      color: #333;
-    }
-
-    .form-group input {
-      width: 100%;
-      padding: 0.75rem;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-    }
-
-    .login-button {
-      width: 100%;
-      padding: 0.75rem;
-      border: none;
-      border-radius: 8px;
-      background-color: #1d3557;
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .login-button:hover {
-      background-color: #457b9d;
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      color: #555;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Inheritance Heist – Login</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="login-container">
-    <h2>Login</h2>
-    <form>
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" placeholder="Your username" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="••••••••" required>
-      </div>
-      <button type="submit" class="login-button">Log in</button>
+    <h1>The Inheritance Heist</h1>
+    <p class="subtitle">Secure Access Portal</p>
+    <form id="loginForm">
+      <label for="account">Account Number</label>
+      <input type="text" id="account" name="account" required placeholder="e.g. NG09384027384"/>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required placeholder="••••••••"/>
+
+      <button type="submit">Access Inheritance</button>
+      <p id="error-msg"></p>
     </form>
-    <div class="footer">
-      Don't have an account? <a href="#" style="color:#1d3557;">Sign up</a>
-    </div>
+    <p class="footer-note">Authorized Eyes Only ⚠️</p>
   </div>
+
+  <script>
+    const validAccount = "NG09384027384";
+    const validPassword = "trusts2023";
+
+    const form = document.getElementById("loginForm");
+    const errorMsg = document.getElementById("error-msg");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      const enteredAccount = document.getElementById("account").value.trim();
+      const enteredPassword = document.getElementById("password").value;
+
+      if (enteredAccount === validAccount && enteredPassword === validPassword) {
+        window.location.href = "game.html"; // Redirect to next phase
+      } else {
+        errorMsg.textContent = "Invalid credentials. Babatunde would be disappointed.";
+        errorMsg.style.color = "#ff4444";
+        errorMsg.style.marginTop = "10px";
+      }
+    });
+  </script>
 </body>
 </html>

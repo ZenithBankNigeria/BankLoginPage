@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  body {
+    background: radial-gradient(circle, #1e1e1e, #000000);
+    color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login-container {
+    background: #121212;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,255,255,0.1);
+    width: 350px;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 1.8em;
+    margin-bottom: 0.2em;
+    color: #00ffff;
+  }
+  
+  .subtitle {
+    font-size: 0.95em;
+    color: #aaa;
+    margin-bottom: 1.5em;
+  }
+  
+  label {
+    display: block;
+    text-align: left;
+    margin: 10px 0 5px;
+    font-weight: bold;
+    color: #ccc;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background: #1f1f1f;
+    color: #eee;
+  }
+  
+  input:focus {
+    outline: 2px solid #00ffff;
+  }
+  
+  button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #00ffff;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  button:hover {
+    background-color: #00dddd;
+  }
+  
+  .footer-note {
+    margin-top: 20px;
+    font-size: 0.8em;
+    color: #555;
+  }
+  
