@@ -9,7 +9,7 @@
 <body>
   <div class="login-container">
     <h1>The Inheritance Heist</h1>
-    <p class="subtitle">Secure Access Portal</p>
+    <p class="subtitle">Enter credentials to access Babatunde’s hidden vault</p>
     <form id="loginForm">
       <label for="account">Account Number</label>
       <input type="text" id="account" name="account" required placeholder="e.g. NG09384027384"/>
@@ -36,7 +36,7 @@
       const enteredPassword = document.getElementById("password").value;
 
       if (enteredAccount === validAccount && enteredPassword === validPassword) {
-        window.location.href = "game.html"; // Redirect to next phase
+        window.location.href = "game.html";
       } else {
         errorMsg.textContent = "Invalid credentials. Babatunde would be disappointed.";
         errorMsg.style.color = "#ff4444";

@@ -1,1 +1,172 @@
-<h2>Welcome, heir of Babatunde.</h2><p>The game continues…</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Client Vault – The Inheritance Heist</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .vault-container {
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .vault-container h2 {
+      color: #00ffff;
+      margin-bottom: 20px;
+    }
+
+    .file-button {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      background: #1f1f1f;
+      border: 1px solid #00ffff;
+      border-radius: 10px;
+      color: #00ffff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .file-button:hover {
+      background-color: #00ffff;
+      color: #000;
+    }
+
+    .modal {
+      display: none;
+      background-color: rgba(0, 0, 0, 0.95);
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .modal h3 {
+      margin-bottom: 15px;
+      color: #00ffff;
+    }
+
+    .number-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .number {
+      background: #1f1f1f;
+      padding: 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .number.correct {
+      background: #00ff88;
+      color: #000;
+    }
+
+    .countdown {
+      font-size: 1.2em;
+      margin-top: 20px;
+      color: #ff4444;
+      display: none;
+    }
+
+    #failsafe-button {
+      margin-top: 30px;
+      padding: 15px;
+      background: #ff4444;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="vault-container">
+    <h2>PRIVATE CLIENT VAULT</h2>
+    <button class="file-button" onclick="openFile('report')">📄 Quarterly Report</button>
+    <button class="file-button" onclick="openFile('clients')">🗂️ Client List</button>
+    <button class="file-button" onclick="openFile('backup')">💾 Legacy Bcakup</button>
+
+    <div class="countdown" id="countdown">SECURITY BREACH DETECTED – LOCKDOWN IN <span id="timer">10:00</span></div>
+    <button id="failsafe-button" onclick="window.location.href='bomb.html'">ENTER FAILSAFE MODE</button>
+  </div>
+
+  <div class="modal" id="modal">
+    <h3 id="modal-title">File Viewer</h3>
+    <div id="modal-content"></div>
+    <button onclick="closeModal()" class="file-button">Close</button>
+  </div>
+
+  <script>
+    const modal = document.getElementById("modal");
+    const modalContent = document.getElementById("modal-content");
+    const modalTitle = document.getElementById("modal-title");
+    const countdownEl = document.getElementById("countdown");
+    const timerEl = document.getElementById("timer");
+    const failsafeBtn = document.getElementById("failsafe-button");
+    let countdownInterval;
+
+    function openFile(type) {
+      modal.style.display = "block";
+      modalContent.innerHTML = "";
+      if (type === "backup") {
+        modalTitle.textContent = "LegacyBcakup.zip";
+        const grid = document.createElement("div");
+        grid.className = "number-grid";
+        const correctNumbers = [17, 23, 41];
+        for (let i = 1; i <= 25; i++) {
+          const number = document.createElement("div");
+          number.className = "number";
+          number.textContent = i * 2;
+          if (correctNumbers.includes(i * 2)) {
+            number.addEventListener("click", () => {
+              number.classList.add("correct");
+              if (document.querySelectorAll(".correct").length === correctNumbers.length) {
+                triggerCountdown();
+              }
+            });
+          } else {
+            number.addEventListener("click", () => {
+              number.style.opacity = "0.3";
+            });
+          }
+          grid.appendChild(number);
+        }
+        modalContent.appendChild(grid);
+      } else {
+        modalTitle.textContent = type === "report" ? "Quarterly Report" : "Client Roster";
+        modalContent.innerHTML = "<p>Nothing suspicious here... or is there?</p>";
+      }
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    function triggerCountdown() {
+      closeModal();
+      countdownEl.style.display = "block";
+      failsafeBtn.style.display = "block";
+      let time = 600;
+      countdownInterval = setInterval(() => {
+        const minutes = Math.floor(time / 60).toString().padStart(2, '0');
+        const seconds = (time % 60).toString().padStart(2, '0');
+        timerEl.textContent = `${minutes}:${seconds}`;
+        time--;
+        if (time < 0) {
+          clearInterval(countdownInterval);
+          alert("System locked. Game over.");
+        }
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
