@@ -14,7 +14,7 @@
     height: 100vh;
   }
   
-  .vault-container {
+  .main-container {
     background: #121212;
     padding: 40px;
     border-radius: 15px;
@@ -35,8 +35,30 @@
     margin-bottom: 1.5em;
   }
   
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .option {
+    background: #1f1f1f;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+    color: #eee;
+  }
+  
+  .option:hover {
+    background-color: #333;
+  }
+  
   .questions-container {
-    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 20px;
+    background: #1f1f1f;
+    border-radius: 8px;
   }
   
   label {
@@ -75,25 +97,6 @@
   
   button:hover {
     background-color: #00dddd;
-  }
-  
-  .number-grid {
-    margin-top: 20px;
-  }
-  
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .grid-container div {
-    padding: 15px;
-    background-color: #1f1f1f;
-    border-radius: 8px;
-    color: #eee;
-    text-align: center;
   }
   
   footer {

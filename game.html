@@ -3,17 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>The Inheritance Heist – Vault</title>
+  <title>The Inheritance Heist – Main Menu</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="vault-container">
+  <div class="main-container">
     <h1>The Inheritance Heist</h1>
-    <p class="subtitle">Unlock the Legacy of Babatunde Olumide</p>
+    <p class="subtitle">Choose Your Path</p>
+    
+    <div class="options">
+      <!-- First Option: Number Grid -->
+      <div class="option" id="option1">
+        <h3>Unlock the Vault</h3>
+        <p>Input the secret number sequence.</p>
+      </div>
 
-    <!-- Trivia Questions -->
-    <div class="questions-container">
-      <h3>Answer the following questions based on Babatunde's biography (printed for reference):</h3>
+      <!-- Second Option: Game Phase -->
+      <div class="option" id="option2">
+        <h3>Game Phase 1</h3>
+        <p>Start the first phase of your quest.</p>
+      </div>
+
+      <!-- Third Option: Number Riddle -->
+      <div class="option" id="option3">
+        <h3>Number Riddle</h3>
+        <p>Try your luck with number-based riddles!</p>
+      </div>
+
+      <!-- Fourth Option: Biography Questions -->
+      <div class="option" id="option4">
+        <h3>Trivia: Babatunde's Biography</h3>
+        <p>Answer questions based on Babatunde's life.</p>
+      </div>
+    </div>
+
+    <!-- Trivia Questions Section (This will be hidden until option 4 is selected) -->
+    <div class="questions-container" id="questionsContainer" style="display: none;">
+      <h3>Answer the following questions based on Babatunde's biography:</h3>
       <form id="questionForm">
         <label for="question1">How many wives did Babatunde have?</label>
         <input type="number" id="question1" required placeholder="Answer: 3">
@@ -27,16 +53,6 @@
         <button type="submit">Submit Answers</button>
         <p id="questionErrorMsg" style="color: red; display: none;">Incorrect answers. Please try again.</p>
       </form>
-    </div>
-
-    <!-- Number Grid for Answer Entry -->
-    <div class="number-grid">
-      <h3>Enter the numbers in the correct sequence:</h3>
-      <p>3, 11, 29</p>
-      <div id="grid" class="grid-container">
-        <!-- Empty grid items will be dynamically added here -->
-      </div>
-      <button id="submitGrid">Submit Grid</button>
     </div>
 
   </div>
