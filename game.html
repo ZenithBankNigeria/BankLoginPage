@@ -42,7 +42,7 @@
         modalTitle.textContent = "Number Grid";
         const grid = document.createElement("div");
         grid.className = "number-grid";
-        const correctNumbers = [4, 24, 40]; // Richtig angepasste Zahlen
+        const correctNumbers = [4, 12, 20]; // Richtig angepasste Zahlen
         for (let i = 1; i <= 25; i++) {
           const number = document.createElement("div");
           number.className = "number";
@@ -68,7 +68,7 @@
           <p>Here are the trivia questions about Babatunde Olumide's life:</p>
           <ul>
             <li><b>Question 1:</b> How many women did Babatunde marry in his lifetime?</li>
-            <li><b>Question 2:</b> In which decade did Babatunde start his business empire?</li>
+            <li><b>Question 2:</b> How many companys did he own</li>
             <li><b>Question 3:</b> How many years did Babatunde spend living abroad?</li>
           </ul>
           <button class="file-button" onclick="submitTriviaAnswers()">Submit Answers</button>
@@ -100,11 +100,7 @@
       }, 1000);
     }
 
-    function submitTriviaAnswers() {
-      // Hier kannst du Logik hinzufügen, um zu überprüfen, ob die Antworten korrekt sind
-      alert("Answers submitted! Now, solve the number grid.");
-    }
+ 
   </script>
 </body>
 </html>
-    
